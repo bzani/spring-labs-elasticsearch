@@ -16,7 +16,7 @@ import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Service;
 
-import com.bdpz.entity.Recipe;
+import com.bdpz.entity.Product;
 import com.bdpz.repository.ProductRepository;
 
 @Service
@@ -30,14 +30,14 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	public List<Recipe> findAll() {
-		List<Recipe> products = new ArrayList<>();
-		Iterable<Recipe> iProducts = productRepository.findAll();
+	public List<Product> findAll() {
+		List<Product> products = new ArrayList<>();
+		Iterable<Product> iProducts = productRepository.findAll();
 		iProducts.forEach(p -> products.add(p));
 		return products;
 	}
 
-	public void createProductIndexBulk(final List<Recipe> products) {
+	public void createProductIndexBulk(final List<Product> products) {
 
 		List<IndexQuery> queries = products.stream()
 				.map(product -> new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build())
@@ -46,7 +46,7 @@ public class ProductService {
 		elasticsearchOperations.bulkIndex(queries, IndexCoordinates.of(PRODUCT_INDEX));
 	}
 
-	public String createProductIndex(Recipe product) {
+	public String createProductIndex(Product product) {
 
 		IndexQuery indexQuery = new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build();
 
@@ -69,7 +69,7 @@ public class ProductService {
 	public void findByProductName(final String productName) {
 		Query searchQuery = new StringQuery("{\"match\":{\"name\":{\"query\":\"" + productName + "\"}}}\"");
 
-		SearchHits<Recipe> products = elasticsearchOperations.search(searchQuery, Recipe.class,
+		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
 				IndexCoordinates.of(PRODUCT_INDEX));
 	}
 
@@ -78,7 +78,7 @@ public class ProductService {
 
 		Query searchQuery = new CriteriaQuery(criteria);
 
-		SearchHits<Recipe> products = elasticsearchOperations.search(searchQuery, Recipe.class,
+		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
 				IndexCoordinates.of(PRODUCT_INDEX));
 	}
 	

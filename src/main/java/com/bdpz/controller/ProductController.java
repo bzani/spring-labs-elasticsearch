@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bdpz.entity.Recipe;
+import com.bdpz.entity.Product;
 import com.bdpz.service.ProductService;
 
 @RequestMapping("/api/v1")
@@ -19,7 +19,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("/products")
-	public ResponseEntity<List<Recipe>> getAll() {
+	public ResponseEntity<List<Product>> getAll() {
 		return ResponseEntity.ok(productService.findAll()); 
 	}
 	

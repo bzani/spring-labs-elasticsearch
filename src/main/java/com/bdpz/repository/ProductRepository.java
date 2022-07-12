@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bdpz.entity.Recipe;
+import com.bdpz.entity.Product;
 
 @Repository
-public interface ProductRepository extends ElasticsearchRepository<Recipe, String> {
+public interface ProductRepository extends ElasticsearchRepository<Product, String> {
 
-	List<Recipe> findByName(String name);
+	List<Product> findByName(String name);
 
-	List<Recipe> findByNameContaining(String name);
+	List<Product> findByNameContaining(String name);
 
-	List<Recipe> findByManufacturerAndCategory(String manufacturer, String category);
+	List<Product> findByManufacturerAndCategory(String manufacturer, String category);
 
 }
