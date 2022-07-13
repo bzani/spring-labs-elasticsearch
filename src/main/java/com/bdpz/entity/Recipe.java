@@ -1,6 +1,5 @@
 package com.bdpz.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -55,7 +54,7 @@ public class Recipe {
 	@Field(type = FieldType.Integer, name = "skill_level")
 	private Integer skillLevel;
 	
-	@Field(type = FieldType.Date, name = "register_time")
-	private Date registerTime;
+	@Field(type = FieldType.Long, name = "register_time")
+	private Long registerTime;
 
 }

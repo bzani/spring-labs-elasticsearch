@@ -22,7 +22,7 @@ import com.bdpz.repository.ProductRepository;
 @Service
 public class ProductService {
 
-	private static final String PRODUCT_INDEX = "products";
+	private static final String INDEX_NAME = "products";
 
 	@Autowired
 	private ElasticsearchOperations elasticsearchOperations;
@@ -43,14 +43,14 @@ public class ProductService {
 				.map(product -> new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build())
 				.collect(Collectors.toList());
 
-		elasticsearchOperations.bulkIndex(queries, IndexCoordinates.of(PRODUCT_INDEX));
+		elasticsearchOperations.bulkIndex(queries, IndexCoordinates.of(INDEX_NAME));
 	}
 
 	public String createProductIndex(Product product) {
 
 		IndexQuery indexQuery = new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build();
 
-		String documentId = elasticsearchOperations.index(indexQuery, IndexCoordinates.of(PRODUCT_INDEX));
+		String documentId = elasticsearchOperations.index(indexQuery, IndexCoordinates.of(INDEX_NAME));
 
 		return documentId;
 	}
@@ -70,7 +70,7 @@ public class ProductService {
 		Query searchQuery = new StringQuery("{\"match\":{\"name\":{\"query\":\"" + productName + "\"}}}\"");
 
 		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
-				IndexCoordinates.of(PRODUCT_INDEX));
+				IndexCoordinates.of(INDEX_NAME));
 		
 		System.out.println(products);
 	}
@@ -81,7 +81,7 @@ public class ProductService {
 		Query searchQuery = new CriteriaQuery(criteria);
 
 		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
-				IndexCoordinates.of(PRODUCT_INDEX));
+				IndexCoordinates.of(INDEX_NAME));
 		
 		System.out.println(products);
 	}

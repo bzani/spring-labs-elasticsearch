@@ -34,7 +34,7 @@ public class Product {
 	@Field(type = FieldType.Keyword, name = "category")
 	private String category;
 
-	@Field(type = FieldType.Text, name = "desc")
+	@Field(type = FieldType.Text, name = "description")
 	private String description;
 
 	@Field(type = FieldType.Keyword, name = "manufacturer")

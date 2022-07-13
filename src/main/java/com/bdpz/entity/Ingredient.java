@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ingredient {
-
 	private String name;
 	private Double value;
-	private IngredientUnit unit;
+	private String unit;
 }

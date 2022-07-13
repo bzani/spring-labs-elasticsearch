@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class NutritionInfo {
 	private String name;
 	private Double value;
-	private IngredientUnit unit;
+	private String unit;
 }
