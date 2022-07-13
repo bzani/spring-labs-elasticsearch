@@ -20,6 +20,10 @@ public class RecipeService {
 		recipeRepository.findAll().forEach(p -> recipes.add(p));
 		return recipes;
 	}
+	
+	public Recipe findById(String id) {
+		return recipeRepository.findById(id).get();
+	}
 
 	public Recipe save(Recipe recipe) {
 		return recipeRepository.save(recipe);
