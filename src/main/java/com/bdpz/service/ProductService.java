@@ -71,6 +71,8 @@ public class ProductService {
 
 		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
 				IndexCoordinates.of(PRODUCT_INDEX));
+		
+		System.out.println(products);
 	}
 
 	public void findByProductPrice(final String productPrice) {
@@ -80,6 +82,8 @@ public class ProductService {
 
 		SearchHits<Product> products = elasticsearchOperations.search(searchQuery, Product.class,
 				IndexCoordinates.of(PRODUCT_INDEX));
+		
+		System.out.println(products);
 	}
 	
 }
