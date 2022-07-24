@@ -1,4 +1,4 @@
-package com.bdpz.controller;
+package com.bdpz.elastic.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bdpz.entity.Recipe;
-import com.bdpz.service.RecipeService;
+import com.bdpz.elastic.model.Recipe;
+import com.bdpz.elastic.service.RecipeService;
 
 @RequestMapping("/api/v1")
 @Controller

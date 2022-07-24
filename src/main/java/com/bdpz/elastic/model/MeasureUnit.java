@@ -1,4 +1,4 @@
-package com.bdpz.entity;
+package com.bdpz.elastic.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

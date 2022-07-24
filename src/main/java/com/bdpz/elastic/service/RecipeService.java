@@ -1,4 +1,4 @@
-package com.bdpz.service;
+package com.bdpz.elastic.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bdpz.entity.Recipe;
-import com.bdpz.repository.RecipeRepository;
+import com.bdpz.elastic.model.Recipe;
+import com.bdpz.elastic.repository.RecipeRepository;
 
 @Service
 public class RecipeService {
